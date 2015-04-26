@@ -9,6 +9,24 @@ First off all, you need a validated DigitalOcean account with your API key gener
 
 ## Nodeset example
 
+You'll need to define a droplet size, image id, and region in your nodeset. When you run beaker, you'll also need to set the `DO_TOKEN` environment variable to your DigitalOcean API key, and the `DO_SSH_KEY` to the fingerprint of the SSH key you want beaker to use.
+
+```yaml
+HOSTS:
+  debian-7-x64:
+    roles:
+      - master
+    platform: debian-78-x86_64
+    hypervisor: digitalocean
+    size: 512mb
+    image: 10322059
+    region: nyc3
+CONFIG:
+  type: git
+```
+
+Or, if you'd prefer to define the ssh_key and access_token in your nodeset:
+
 ```yaml
 HOSTS:
   debian-7-x64:

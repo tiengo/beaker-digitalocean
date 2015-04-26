@@ -11,11 +11,11 @@ module Beaker
       @logger = options[:logger]
       @hosts = digitalocean_hosts
       @vms = []
-      @digitalocean_access_token = @options[:digitalocean_access_token]
-      @digitalocean_ssh_keys = @options[:digitalocean_ssh_keys]
+      @digitalocean_access_token = ENV['DO_TOKEN'] || @options[:digitalocean_access_token]
+      @digitalocean_ssh_keys = ENV['DO_SSH_KEY'] || @options[:digitalocean_ssh_keys]
       @do ||= Barge::Client.new(access_token: @digitalocean_access_token )
     end
-  
+
     def provision
       @hosts.each do |host|
         host[:vmhostname] = generate_host_name
