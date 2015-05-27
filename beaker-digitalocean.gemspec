@@ -14,4 +14,5 @@ Gem::Specification.new do |s|
   s.files         = [ "lib/beaker/hypervisor/digitalocean.rb" ]
   s.require_paths = [ "lib" ]
 
+  s.add_runtime_dependency 'barge', '>= 0.11.0'
 end
